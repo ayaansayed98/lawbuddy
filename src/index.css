@@ -207,6 +207,29 @@ body {
   border-bottom-left-radius: 4px;
 }
 
+/* Fix text and code block overflows */
+.message-bubble {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.message-bubble.ai pre {
+  background-color: rgba(0,0,0,0.3);
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.message-bubble.ai code {
+  font-family: monospace;
+  background-color: rgba(0,0,0,0.3);
+  padding: 2px 4px;
+  border-radius: 4px;
+  word-break: break-word;
+}
+
 /* Markdown Styles inside AI bubble */
 .message-bubble.ai h1, 
 .message-bubble.ai h2, 
@@ -555,7 +578,10 @@ body {
   }
 
   .chat-header h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .badge-text {
@@ -563,15 +589,29 @@ body {
   }
 
   .messages-container {
-    padding: 16px;
+    padding: 16px 12px;
+  }
+
+  .message-wrapper {
+    gap: 8px;
   }
 
   .message-bubble {
-    max-width: 90%;
+    max-width: 95%;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .ai-actions {
+    flex-wrap: wrap;
   }
 
   .input-area-container {
-    padding: 16px;
+    padding: 12px;
+  }
+
+  .input-box {
+    padding: 8px;
   }
 
   .features-grid {
