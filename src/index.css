@@ -26,7 +26,8 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-main);
-  height: 100vh;
+  height: 100vh; /* Fallback */
+  height: 100dvh; /* Use dynamic viewport height for mobile browsers */
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -34,6 +35,7 @@ body {
 .app-container {
   display: flex;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
 }
 
