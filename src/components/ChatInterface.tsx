@@ -32,7 +32,9 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMe
   };
 
   useEffect(() => {
-    scrollToBottom();
+    if (messages.length > 0 || isTyping) {
+      scrollToBottom();
+    }
   }, [messages, isTyping]);
 
   const handleSend = () => {
