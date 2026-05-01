@@ -13,6 +13,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [history, setHistory] = useState<{ id: string; title: string }[]>([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleNewChat = () => {
     if (messages.length > 0) {
@@ -47,11 +48,17 @@ function App() {
 
   return (
     <div className="app-container">
-      <Sidebar onNewChat={handleNewChat} history={history} />
+      <Sidebar 
+        onNewChat={handleNewChat} 
+        history={history} 
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
       <ChatInterface 
         messages={messages} 
         onSendMessage={handleSendMessage} 
         isTyping={isTyping} 
+        onToggleSidebar={() => setIsSidebarOpen(prev => !prev)}
       />
     </div>
   );

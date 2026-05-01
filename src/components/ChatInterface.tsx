@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import { 
   Send, Mic, Camera, Paperclip, 
   FileText, Presentation, FileDown, 
-  BookOpen, BrainCircuit, RefreshCw, StopCircle, Scale
+  BookOpen, BrainCircuit, RefreshCw, StopCircle, Scale, Menu
 } from 'lucide-react';
 import pptxgen from 'pptxgenjs';
 
@@ -18,9 +18,10 @@ interface ChatInterfaceProps {
   messages: Message[];
   onSendMessage: (msg: string) => void;
   isTyping: boolean;
+  onToggleSidebar: () => void;
 }
 
-export const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, isTyping }) => {
+export const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, isTyping, onToggleSidebar }) => {
   const [input, setInput] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [showModal, setShowModal] = useState<{show: boolean, type: string}>({show: false, type: ''});
@@ -89,11 +90,14 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMe
     <div className="main-chat">
       <div className="chat-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button className="mobile-menu-btn" onClick={onToggleSidebar}>
+            <Menu size={24} />
+          </button>
           <h2>Real-Time Legal Assistant</h2>
-          <div className="badge">
-            <RefreshCw size={12} />
-            Data Synced Today
-          </div>
+        </div>
+        <div className="badge">
+          <RefreshCw size={12} />
+          <span className="badge-text">Data Synced Today</span>
         </div>
       </div>
 
