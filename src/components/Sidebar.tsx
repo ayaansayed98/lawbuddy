@@ -3,12 +3,14 @@ import { Scale, Plus, MessageSquare, X } from 'lucide-react';
 
 interface SidebarProps {
   onNewChat: () => void;
+  onSelectChat: (id: string) => void;
   history: { id: string; title: string }[];
   isOpen: boolean;
   onClose: () => void;
+  currentChatId: string | null;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ onNewChat, history, isOpen, onClose }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ onNewChat, onSelectChat, history, isOpen, onClose, currentChatId }) => {
   return (
     <>
       <div className={`sidebar-overlay ${isOpen ? 'open' : ''}`} onClick={onClose} />
@@ -28,7 +30,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ onNewChat, history, isOpen, on
 
         <div className="history-list">
           {history.map((item) => (
-            <div key={item.id} className="history-item">
+            <div 
+              key={item.id} 
+              className={`history-item ${currentChatId === item.id ? 'active' : ''}`}
+              onClick={() => onSelectChat(item.id)}
+            >
               <MessageSquare size={16} />
               <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {item.title}
