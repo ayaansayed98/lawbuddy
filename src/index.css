@@ -36,7 +36,7 @@ body {
   display: flex;
   height: 100vh;
   height: 100dvh;
-  width: 100vw;
+  width: 100%;
 }
 
 /* Sidebar */
@@ -131,6 +131,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  min-width: 0;
 }
 
 .chat-header {
@@ -546,6 +547,8 @@ body {
 .intro-container p {
   color: var(--text-muted);
   max-width: 600px;
+  width: 100%;
+  padding: 0 16px;
   line-height: 1.6;
   margin-bottom: 32px;
 }
@@ -555,6 +558,8 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   max-width: 900px;
+  width: 100%;
+  padding: 0 16px;
 }
 
 .feature-card {
